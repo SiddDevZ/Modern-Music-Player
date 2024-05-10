@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Music Player</title>
+    <link href="https://cdn.jsdelivr.net/npm/remixicon@4.2.0/fonts/remixicon.css" rel="stylesheet"/>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="style2.css">
+</head>
+<body>
+    <div id="main">
+        <div class="left">
+            <div class="left-sec-1">
+                <div class="poster"></div>
+            </div>
+            <div class="sec-2-wrapper">
+                <div class="left-sec-2">
+                    <h4 class="songtitle" id="song-title"></h4>
+                    <input type="range" id="progress-bar" class="audio-progress" min="0" max="100" value="0">
+                    <div class="player">
+                        <h3 class="back" ><i class="ri-skip-back-fill"></i></h3>
+                        <h3 class="play" ><i class="ri-play-fill"></i></h3>
+                        <h3 class="forward" ><i class="ri-skip-forward-fill"></i></h3>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="right">
+            <h3>All Songs</h3>
+            
+            <div class="all-songs">
+                
+            </div>
+        </div>
+    </div>
+    <!--<div class="player">
+        <h3 class="back" ><i class="ri-skip-back-fill"></i></h3>
+        <h3 class="play" ><i class="ri-play-fill"></i></h3>
+        <h3 class="forward" ><i class="ri-skip-forward-fill"></i></h3>
+    </div>-->
+    <script src="script.js"></script>
+</body>
+</html>

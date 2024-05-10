@@ -1,0 +1,215 @@
+@import url('https://fonts.cdnfonts.com/css/gilroy');
+                
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    color: white;
+    font-family: 'Gilroy', sans-serif;
+}
+html, body{
+    height: 100%;
+    width: 100%;
+}
+
+#main {
+    height: 100%;
+    display: flex;
+    justify-content: space-around;
+    width: 100%;
+    background-color: #111;
+    padding: 5vw 5vw;
+}
+
+.left {
+    height: 100%;
+    width: 35%;
+    border-radius: 5%;
+    background-color: #bababa;
+    display: flex;
+    flex-direction: column;
+}
+
+.left-sec-1 {
+    height: 75%;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.sec-2-wrapper{
+    height: 25%;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+
+    align-items: center;
+    justify-content: center;
+}
+.left-sec-2{
+    height: 100%;
+    width: 85%;
+}
+#song-title{
+    color: black;
+    font-size: 25px;
+}
+#progress-bar{
+    width: 100%;
+
+}
+.song-wrapper{
+    width: 20%;
+    display: flex;
+    justify-content: space-between;
+}
+/*.another-wrapper{
+    display: inline;
+    margin-right: 40px;
+}*/
+.audio-progress {
+    /* Set the height of the progress bar */
+    height: 30%; /* Adjust the height as needed */
+    position: relative;
+    /* Customize other styles as desired */
+}
+.now.playing .bar {
+    display: inline-block;
+    position: relative;
+    margin-right: 1px;
+    width: 2px;
+    height: 1px;
+    overflow: hidden;
+    background: linear-gradient(to bottom, #ffffff, #8f8f8f);
+    /*background: linear-gradient(to bottom, #ff9500, #ff5e3a);*/
+    color: transparent;
+    animation-name: pulse;
+    animation-duration: 1.2s;
+    animation-iteration-count: infinite;
+    animation-timing-function: ease-in-out;
+    top: 20px;
+  }
+  .paused.playing .bar {
+    animation-iteration-count: 1;
+  }
+  .n1 {
+    animation-delay: 0.5s;
+  }
+  .n2 {
+    animation-delay: 0.2s;
+  }
+  .n3 {
+    animation-delay: 1.5s;
+  }
+  .n4 {
+    animation-delay: 0.9s;
+  }
+  
+  @keyframes pulse {
+    0% {
+      height: 1px;
+      margin-top: 0;
+    }
+    10% {
+      height: 40px;
+      margin-top: -40px;
+    }
+    50% {
+      height: 20px;
+      margin-top: -20px;
+    }
+    60% {
+      height: 10px;
+      margin-top: -30px;
+    }
+    80% {
+      height: 35px;
+      margin-top: -60px;
+    }
+    100% {
+      height: 1px;
+      margin-top: 0;
+    }
+  }
+
+.poster {
+    box-shadow: 3px 3px 30px rgb(0, 0, 0);
+    height: 90%;
+    border-radius: 5%;
+    width: 85%;
+    background-size: cover;
+    background-position: center;
+}
+.right{
+    height: 85%;
+    width: 50%;
+
+    padding-left: 3vw;;
+}
+
+.right h3{
+    font-size: 40px;
+    font-family: "Neuehaasdisplay mediu", sans-serif !important;
+}
+.all-songs{
+    height: 85%;
+    margin-top: 30px;
+}
+.song-card{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    border-top: 1px solid #fff;
+    padding: 18px 10px;
+    transition: all 0.1s ease;
+}
+.part1{
+    display: flex;
+    align-items: center;
+    pointer-events: none;
+}
+.song-card img{
+    height: 55px;
+    width: 55px;
+    object-fit: cover;
+    margin-right: 20px;
+}
+.song-card:hover{
+    background-color: #232323;
+}
+.song-card h2{
+    font-size: 22px;
+}
+.song-card h6{
+    font-size: 22px;
+    font-weight: 500;
+}
+.song-card:nth-last-child(1){
+    border-bottom: 1px solid #fff;
+}
+
+.player{
+
+    width: 100%;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+}
+.player h3{
+    background-color: rgb(33, 33, 33);
+    padding: 10px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.1s ease;
+}
+.player h3 i{
+    font-size: 24px;
+}
+.player h3:active{
+    scale: 0.9;
+}
