@@ -60,8 +60,8 @@ html, body{
     .song-wrapper{
         width: 30% !important;
     }
-    .left{
-        margin-top: 65px !important;
+    #lefti{
+        margin-top: 70px !important;
     }
 }
 
