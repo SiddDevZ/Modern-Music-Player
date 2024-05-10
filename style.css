@@ -11,23 +11,55 @@ html, body{
     height: 100%;
     width: 100%;
 }
-
-#main {
+#particles-js {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: #6a2e00;
+    color: white;
+    z-index: -1;
+    overflow: hidden; /* Ensure particles extend beyond viewport */
+}
+  #main {
     height: 100%;
     display: flex;
     justify-content: space-around;
     width: 100%;
-    background-color: #071013;
-    padding: 5vw 5vw;
+    padding: 5vw;
+    box-sizing: border-box;
 }
 
 .left {
     height: 100%;
     width: 35%;
     border-radius: 5%;
-    background-color: #AAAAAA;
+    backdrop-filter: blur(2px);
+    border: white solid 2px;
     display: flex;
     flex-direction: column;
+    transform-style: preserve-3d;
+}
+
+@media (max-width: 890px) {
+    #main{
+        flex-direction: column;
+        
+    }
+    .right{
+        width: 100% !important;
+    }
+    .left {
+        width: 100% !important;
+        min-height: 600px !important;
+        margin-bottom: 30px;
+    }
+}
+@media (max-width: 500px){
+    .song-wrapper{
+        width: 30% !important;
+    }
 }
 
 .left-sec-1 {
@@ -57,7 +89,7 @@ html, body{
     width: 85%;
 }
 #song-title{
-    color: black;
+    color: white;
     font-size: 25px;
 }
 #progress-bar{
@@ -66,18 +98,16 @@ html, body{
 }
 .song-wrapper{
     width: 20%;
+
     display: flex;
     justify-content: space-between;
 }
-/*.another-wrapper{
-    display: inline;
-    margin-right: 40px;
-}*/
+
 .audio-progress {
-    /* Set the height of the progress bar */
+
     height: 30%; /* Adjust the height as needed */
     position: relative;
-    /* Customize other styles as desired */
+
 }
 .now.playing .bar {
     display: inline-block;
@@ -157,6 +187,10 @@ html, body{
     margin-top: 25px;
     justify-content: center;
     gap: 5%;
+    margin-bottom: 40px;
+}
+.page-btns button {
+    margin-bottom: 40px;
 }
 
 .right h3{
@@ -174,6 +208,7 @@ html, body{
     border-top: 1px solid #fff;
     padding: 18px 10px;
     transition: all 0.1s ease;
+    backdrop-filter: blur(3px);
 }
 
 .part1{
@@ -211,7 +246,7 @@ html, body{
     gap: 10px;
 }
 .player h3{
-    background-color: rgb(33, 33, 33);
+    background-color: rgb(24, 24, 24);
     padding: 10px;
     border-radius: 50%;
     display: flex;

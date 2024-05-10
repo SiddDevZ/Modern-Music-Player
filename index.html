@@ -9,10 +9,11 @@
     <link rel="stylesheet" href="assets/style2.css">
 </head>
 <body>
+    <div id="particles-js"></div>
     <div id="main">
         <div class="left">
             <div class="left-sec-1">
-                <div class="poster"></div>
+                <div class="poster js-tilt" data-tilt></div>
             </div>
             <div class="sec-2-wrapper">
                 <div class="left-sec-2">
@@ -28,7 +29,7 @@
         </div>
         <div class="right">
             <div class="right-sec-1">
-                <h3 style="color: #EE4B2B;">All Songs</h3>
+                <h3>All Songs</h3>
                 <i class="ri-shuffle-line shuffle"></i>
             </div>
             
@@ -47,5 +48,14 @@
         <h3 class="forward" ><i class="ri-skip-forward-fill"></i></h3>
     </div>-->
     <script src="script.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+    <script src="./misc/tilt.jquery.js"></script>
+    <script src="./misc/particles.min.js"></script>
+    <script src="./misc/particles-js-config.js"></script>
+    <script>
+        $('.js-tilt').tilt({
+            maxTilt: 3 // Adjust as needed
+        });
+    </script>
 </body>
 </html>

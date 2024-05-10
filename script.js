@@ -9,7 +9,7 @@ var arr = [
     {name: "Romantic Homicide", url:"./songs/rom.mp3", image: "./assets/rom.jpeg", duration:"1:33"},
     {name: "Heat Waves", url:"./songs/heat.mp3", image: "./assets/heat.jpeg", duration:"3:58"},
     {name: "Happy Hour", url:"./songs/hap.mp3", image: "./assets/hap.jpeg", duration:"3:57"},
-    {name: "Reminder", url:"./songs/star.mp3", image: "./assets/star.jpeg", duration:"1:33"},
+    {name: "Reminder", url:"./songs/Reminder.mp3", image: "./assets/star.jpeg", duration:"1:33"},
     {name: "All The Things She Said", url:"./songs/al.mp3", image: "./assets/al.jpeg", duration:"3:34"},
     {name: "Five Nights at Freddy's", url:"./songs/five.mp3", image: "./assets/five.jpeg", duration:"3:51"},
 ]
@@ -36,6 +36,7 @@ var shuffleactive = false;
 let currentPage = 0;
 const songsPerPage = 5;
 var page_flag = 0
+var stop = 0
 
 function mainFunction(){
     const startIndex = currentPage * songsPerPage;
@@ -93,13 +94,15 @@ function mainFunction(){
 function play_pause(){
     play.addEventListener("click", function(){
         if (flag == 0){
-            play.innerHTML = `<i class="ri-pause-fill"></i>`
             audio.play();
             flag = 1
+//            stop = 0;
+            play.innerHTML = `<i class="ri-pause-fill"></i>`
         } else{
-            play.innerHTML = `<i class="ri-play-fill"></i>`
             flag = 0;
             audio.pause();
+//            stop = 1;
+            play.innerHTML = `<i class="ri-play-fill"></i>`
         }
     })
 }
@@ -143,6 +146,9 @@ function progress_bar(){
 
     audio.addEventListener('timeupdate', function() {
         let progress = (audio.currentTime / audio.duration) * 100;
+//        if (stop == 0){
+//            play.innerHTML = `<i class="ri-pause-fill"></i>`
+//        }
         progressBar.value = progress;
     })
 
@@ -172,7 +178,7 @@ function Shuffle(){
     document.querySelector(".shuffle").addEventListener("click", function(){
         if (shuffleactive == false){
             shuffleactive = true;
-            document.querySelector(".shuffle").style.color = "#EE4B2B";
+            document.querySelector(".shuffle").style.color = "rgba(91, 155, 0, 0.996)";
         } else {
             shuffleactive = false;
             document.querySelector(".shuffle").style.color = "white";
