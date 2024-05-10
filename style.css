@@ -10,6 +10,10 @@
 html, body{
     height: 100%;
     width: 100%;
+    padding-top: env(safe-area-inset-top);
+}
+meta[name="viewport"] {
+    viewport-fit: cover;
 }
 #particles-js {
     position: fixed;
@@ -60,9 +64,9 @@ html, body{
     .song-wrapper{
         width: 30% !important;
     }
-    #lefti{
+    /*#lefti{
         margin-top: 70px !important;
-    }
+    }*/
 }
 
 .left-sec-1 {
