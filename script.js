@@ -1,13 +1,22 @@
 var arr = [
-    {name:"Azadi", url:"./songs/Azadi.mp3", image: "https://i.scdn.co/image/ab67616d0000b27399241710b1b1b590b79d444e", duration:"2:31"}, 
-    {name: "Attitude", url:"./songs/Attitude.mp3", image: "https://i.scdn.co/image/ab67616d0000b273fd45e34bd6337969feb65bf9", duration:"3:31"}, 
-    {name: "Cats", url:"./songs/Cats.mp3", image: "https://i.scdn.co/image/ab67616d0000b273ababb065e92613028d0e27ea", duration:"1:33"},
-    {name: "Maharani ft. Arpit Bala", url:"./songs/Maharani.mp3",image:"https://i.scdn.co/image/ab67616d0000b273baea99dcf7614578bf5c3d10", duration:"6:29"}
+    {name:"Azadi", url:"./songs/Azadi.mp3", image: "./assets/azadi.jpeg", duration:"2:31"}, 
+    {name: "Attitude", url:"./songs/Attitude.mp3", image: "./assets/attitute.jpeg", duration:"3:31"}, 
+    {name: "Cats", url:"./songs/Cats.mp3", image: "./assets/cats.jpeg", duration:"1:33"},
+    {name: "Maharani ft. Arpit Bala", url:"./songs/Maharani.mp3",image:"./assets/mahrani.jpeg", duration:"6:29"},
+    {name: "Aashiyan", url:"./songs/Aashiyan.mp3", image: "./assets/aa.jpeg", duration:"3:53"},
+    {name: "Kyon", url:"./songs/Kyon.mp3", image: "./assets/aa.jpeg", duration:"4:26"},
+    {name: "I Love You So", url:"./songs/ilys.mp3", image: "./assets/loveyouso.jpeg", duration:"2:40"},
+    {name: "Romantic Homicide", url:"./songs/rom.mp3", image: "./assets/rom.jpeg", duration:"1:33"},
+    {name: "Heat Waves", url:"./songs/heat.mp3", image: "./assets/heat.jpeg", duration:"3:58"},
+    {name: "Happy Hour", url:"./songs/hap.mp3", image: "./assets/hap.jpeg", duration:"3:57"},
+    {name: "Reminder", url:"./songs/star.mp3", image: "./assets/star.jpeg", duration:"1:33"},
+    {name: "All The Things She Said", url:"./songs/al.mp3", image: "./assets/al.jpeg", duration:"3:34"},
+    {name: "Five Nights at Freddy's", url:"./songs/five.mp3", image: "./assets/five.jpeg", duration:"3:51"},
 ]
 // add more songs n all
 var audio = new Audio()
 var progressBar = document.getElementById('progress-bar');
-var selectedSong = 3
+let selectedSong = 3;
 var poster = document.querySelector(".poster")
 var songtitle = document.querySelector(".songtitle")
 var play = document.querySelector(".play")
@@ -15,12 +24,20 @@ var back = document.querySelector(".back")
 var forward = document.querySelector(".forward")
 var flag = 0;
 var used = true;
+var shuffleactive = false;
+let currentPage = 0;
+const songsPerPage = 5;
+
 
 function mainFunction(){
-    var clutter = ""
-    arr.forEach(function(object, index){
-        if (used == true && index == selectedSong){
-            clutter = clutter + `<div class="song-card" id="${index}">
+    const startIndex = currentPage * songsPerPage;
+    const endIndex = startIndex + songsPerPage;
+    var clutter = "";
+    
+    arr.slice(startIndex, endIndex).forEach(function(object, index){
+        const songIndex = startIndex + index;
+        if (used == true && songIndex == selectedSong){
+            clutter = clutter + `<div class="song-card" id="${songIndex}">
             <div class="part1">
                 <img src="${object.image}" alt="Song image">
                 <h2>${object.name}</h2>
@@ -44,7 +61,7 @@ function mainFunction(){
             back.style.opacity = 1;
         }
         } else {
-            clutter = clutter + `<div class="song-card" id="${index}">
+            clutter = clutter + `<div class="song-card" id="${songIndex}">
             <div class="part1">
                 <img src="${object.image}" alt="Song image">
                 <h2>${object.name}</h2>
@@ -54,10 +71,12 @@ function mainFunction(){
         }
     })
     document.querySelector(".all-songs").innerHTML = clutter;
+    
     audio.src = arr[selectedSong].url
 
     poster.style.backgroundImage = `url(${arr[selectedSong].image})`
     document.getElementById("song-title").textContent = arr[selectedSong].name;
+
 }
 
 function play_pause(){
@@ -77,7 +96,11 @@ function play_pause(){
 function Forward_Backward(){
     forward.addEventListener("click", function(){
         if (selectedSong < arr.length - 1){
-            selectedSong = selectedSong + 1;
+            if (shuffleactive == true){
+                selectedSong = Math.floor(Math.random() * arr.length);
+            } else {
+                selectedSong = selectedSong + 1;
+            }
             mainFunction();
             audio.play();
         } else {
@@ -87,7 +110,11 @@ function Forward_Backward(){
 
     back.addEventListener("click", function(){
         if (selectedSong > 0){
-            selectedSong = selectedSong - 1;
+            if (shuffleactive == true){
+                selectedSong = Math.floor(Math.random() * arr.length);
+            } else{
+                selectedSong = selectedSong - 1;
+            }
             mainFunction();
             audio.play();
         } else {
@@ -107,7 +134,55 @@ function progress_bar(){
         let progress = (audio.currentTime / audio.duration) * 100;
         progressBar.value = progress;
     })
+
+    audio.addEventListener('ended', function() {
+        if (selectedSong < arr.length - 1){
+            if (shuffleactive == true){
+                selectedSong = Math.floor(Math.random() * arr.length);
+            }
+            else {
+                selectedSong = selectedSong + 1;
+            }
+            mainFunction();
+            audio.play();
+        } else {
+            if (shuffleactive == true){
+                selectedSong = Math.floor(Math.random() * arr.length);
+            } else{
+                selectedSong = 0;
+            }
+            mainFunction();
+            audio.play();
+        }
+    })
 }
+
+function Shuffle(){
+    document.querySelector(".shuffle").addEventListener("click", function(){
+        if (shuffleactive == false){
+            shuffleactive = true;
+            document.querySelector(".shuffle").style.color = "#EE4B2B";
+        } else {
+            shuffleactive = false;
+            document.querySelector(".shuffle").style.color = "white";
+        }
+    })
+}
+
+function nextPage() {
+    if ((currentPage + 1) * songsPerPage < arr.length) {
+        currentPage++;
+        mainFunction();
+    }
+}
+function previousPage() {
+    if (currentPage > 0) {
+        currentPage--;
+        mainFunction();
+    }
+}
+document.getElementById("next-button").addEventListener("click", nextPage);
+document.getElementById("previous-button").addEventListener("click", previousPage);
 
 document.querySelector(".all-songs").addEventListener("click", function(e){
     selectedSong = e.target.id
@@ -121,4 +196,5 @@ document.querySelector(".all-songs").addEventListener("click", function(e){
 mainFunction();
 play_pause();
 progress_bar();
+Shuffle();
 Forward_Backward();

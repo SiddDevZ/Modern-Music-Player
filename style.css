@@ -17,7 +17,7 @@ html, body{
     display: flex;
     justify-content: space-around;
     width: 100%;
-    background-color: #000;
+    background-color: #071013;
     padding: 5vw 5vw;
 }
 
@@ -25,7 +25,7 @@ html, body{
     height: 100%;
     width: 35%;
     border-radius: 5%;
-    background-color: #bababa;
+    background-color: #AAAAAA;
     display: flex;
     flex-direction: column;
 }
@@ -36,6 +36,11 @@ html, body{
     display: flex;
     justify-content: center;
     align-items: center;
+}
+.right-sec-1{
+    display: flex;
+    font-size: 40px;
+    justify-content: space-between;
 }
 
 .sec-2-wrapper{
@@ -81,7 +86,7 @@ html, body{
     width: 2px;
     height: 1px;
     overflow: hidden;
-    background: linear-gradient(to bottom, #ffffff, #8f8f8f);
+    background: linear-gradient(to bottom, #EE4B2B, #EE4B2B);
     /*background: linear-gradient(to bottom, #ff9500, #ff5e3a);*/
     color: transparent;
     animation-name: pulse;
@@ -147,6 +152,12 @@ html, body{
 
     padding-left: 3vw;;
 }
+.page-btns{
+    display: flex;
+    margin-top: 25px;
+    justify-content: center;
+    gap: 5%;
+}
 
 .right h3{
     font-size: 40px;
@@ -164,6 +175,7 @@ html, body{
     padding: 18px 10px;
     transition: all 0.1s ease;
 }
+
 .part1{
     display: flex;
     align-items: center;
