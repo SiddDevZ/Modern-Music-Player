@@ -13,6 +13,14 @@ var arr = [
     {name: "All The Things She Said", url:"./songs/al.mp3", image: "./assets/al.jpeg", duration:"3:34"},
     {name: "Five Nights at Freddy's", url:"./songs/five.mp3", image: "./assets/five.jpeg", duration:"3:51"},
 ]
+function shuffleArray(array) {
+    for (let i = array.length - 1; i > 0; i--) {
+        const j = Math.floor(Math.random() * (i + 1));
+        [array[i], array[j]] = [array[j], array[i]];
+    }
+    return array;
+}
+var arr = shuffleArray(arr);
 // add more songs n all
 var audio = new Audio()
 var progressBar = document.getElementById('progress-bar');
@@ -27,7 +35,7 @@ var used = true;
 var shuffleactive = false;
 let currentPage = 0;
 const songsPerPage = 5;
-
+var page_flag = 0
 
 function mainFunction(){
     const startIndex = currentPage * songsPerPage;
@@ -72,10 +80,13 @@ function mainFunction(){
     })
     document.querySelector(".all-songs").innerHTML = clutter;
     
-    audio.src = arr[selectedSong].url
-
-    poster.style.backgroundImage = `url(${arr[selectedSong].image})`
-    document.getElementById("song-title").textContent = arr[selectedSong].name;
+    if (page_flag == 0){
+        audio.src = arr[selectedSong].url
+        poster.style.backgroundImage = `url(${arr[selectedSong].image})`
+        document.getElementById("song-title").textContent = arr[selectedSong].name;
+    } else{
+        page_flag = 0;
+    }
 
 }
 
@@ -172,12 +183,14 @@ function Shuffle(){
 function nextPage() {
     if ((currentPage + 1) * songsPerPage < arr.length) {
         currentPage++;
+        page_flag = 1;
         mainFunction();
     }
 }
 function previousPage() {
     if (currentPage > 0) {
         currentPage--;
+        page_flag = 1;
         mainFunction();
     }
 }
