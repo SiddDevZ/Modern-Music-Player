@@ -37,6 +37,12 @@ function mainFunction(){
                 <h6>${object.duration}</h6>
             </div>
         </div>`
+        if (selectedSong < arr.length - 1){
+            forward.style.opacity = 1;
+        }
+        if (selectedSong > 0){
+            back.style.opacity = 1;
+        }
         } else {
             clutter = clutter + `<div class="song-card" id="${index}">
             <div class="part1">
@@ -64,7 +70,6 @@ function play_pause(){
             play.innerHTML = `<i class="ri-play-fill"></i>`
             flag = 0;
             audio.pause();
-            document.querySelector(".now.playing .bar").style.animationDuration = "10s";
         }
     })
 }
