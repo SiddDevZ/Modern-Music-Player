@@ -60,6 +60,9 @@ html, body{
     .song-wrapper{
         width: 30% !important;
     }
+    .left{
+        margin-top: 65px !important;
+    }
 }
 
 .left-sec-1 {
