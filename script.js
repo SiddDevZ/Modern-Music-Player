@@ -12,6 +12,7 @@ var arr = [
     {name: "Reminder", url:"./songs/Reminder.mp3", image: "./assets/star.jpeg", duration:"1:33"},
     {name: "All The Things She Said", url:"./songs/al.mp3", image: "./assets/al.jpeg", duration:"3:34"},
     {name: "Five Nights at Freddy's", url:"./songs/five.mp3", image: "./assets/five.jpeg", duration:"3:51"},
+    {name: "Volume 1", url:"./songs/vol.mp3", image: "./assets/vol.png", duration:"3:53"},
 ]
 function shuffleArray(array) {
     for (let i = array.length - 1; i > 0; i--) {
