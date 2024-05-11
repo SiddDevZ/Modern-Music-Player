@@ -13,7 +13,7 @@ html, body{
     padding-top: env(safe-area-inset-top);
 }
 meta[name="viewport"] {
-    viewport-fit: cover;
+    viewport-fit: cover; 
 }
 #particles-js {
     position: fixed;
@@ -248,7 +248,7 @@ meta[name="viewport"] {
     width: 100%;
 
     display: flex;
-    align-items: center;
+    align-items:center;
     justify-content: center;
     gap: 10px;
 }
